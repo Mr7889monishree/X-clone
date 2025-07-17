@@ -33,6 +33,7 @@ app.use((err,req,res,next)=>{
 const startServer = async () => {
   try {
     await DB();
+    //entering page
     app.get('/',(req,res)=>{
       res.status(200).json({message:"Welcome!"});
     })
