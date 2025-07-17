@@ -34,11 +34,11 @@ const startServer = async () => {
   try {
     await DB();
     //entering page
-    app.get('/',(req,res)=>{
-      res.status(200).json({message:"Welcome!"});
-    })
     // listen for local development
     if (ENV.NODE_ENV !== "production") {
+      app.get('/',(req,res)=>{
+      res.status(200).json({message:"Welcome!"});
+    })
       app.listen(ENV.PORT, () => console.log("Server is up and running on PORT:", ENV.PORT));
     }
   } catch (error) {
