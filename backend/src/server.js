@@ -13,14 +13,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(clerkMiddleware());
-app.use(arcjetMiddleware());
+app.use(arcjetMiddleware);
 
-const port = ENV.PORT || 5001;
-
-// ✅ Define this BEFORE start
-app.get("/", (req, res) => {
-  res.status(200).json({ message: "Welcome to the backend API!" });
-});
+app.get("/", (req, res) => res.send("Hello from server"));
 
 // API routes
 app.use("/api/users", userRoutes);
@@ -40,7 +35,7 @@ const startServer = async () => {
 
     // ✅ Start server regardless of environment (for local only)
     if (process.env.NODE_ENV !== "production") {
-      app.listen(port, () => console.log("Server running on port", port));
+      app.listen(ENV.PORT, () => console.log("Server running on port", ENV.PORT));
     }
   } catch (error) {
     console.error("Failed to start server:", error.message);
@@ -50,6 +45,5 @@ const startServer = async () => {
 
 startServer();
 
-//to export app in vercel 
 
 export default app;
