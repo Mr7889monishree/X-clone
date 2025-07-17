@@ -22,7 +22,6 @@ app.use("/api/posts",postRoutes);
 app.use("/api/comments",commentRoutes)
 app.use("/api/notifications",notificationRoutes);
 
-//custom middleware 
 //error handling middleware
 app.use((err,req,res,next)=>{
     console.error("Unhandled error:",err);
