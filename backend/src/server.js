@@ -33,19 +33,21 @@ app.use((err,req,res,next)=>{
 const startServer = async () => {
   try {
     await DB();
-    //entering page
-    // listen for local development
+
+    app.get('/', (req, res) => {
+      res.status(200).json({ message: "Welcome to the backend API!" });
+    });
+
+    // Start server in development
     if (ENV.NODE_ENV !== "production") {
-      app.get('/',(req,res)=>{
-      res.status(200).json({message:"Welcome!"});
-    })
-      app.listen(ENV.PORT, () => console.log("Server is up and running on PORT:", ENV.PORT));
+      app.listen(port, () => console.log("Server is running on port", port));
     }
   } catch (error) {
     console.error("Failed to start server:", error.message);
     process.exit(1);
   }
 };
+
 
 startServer();
 
