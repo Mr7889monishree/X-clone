@@ -1,6 +1,4 @@
-import {View,Text, TouchableOpacity, ActivityIndicator} from "react-native";
-import {Image} from "expo-image";
-import "../../global.css"
+import {View,Text, TouchableOpacity, ActivityIndicator,Image} from "react-native";
 import { useSocialAuth } from "@/hooks/useSocialAuth";
 export default function Index() {
   const {isLoading,handleSocialAuth}= useSocialAuth();
@@ -14,7 +12,7 @@ export default function Index() {
             <Image
             source={require("../../assets/images/auth2.png")}
             className="size-96"
-            contentFit="cover"/>
+            resizeMode="cover"/>
           </View>
           <View className="flex-col gap-2">
             <TouchableOpacity className="flex-row items-center justify-center bg-white border border-gray-300 rounded-full 
@@ -36,7 +34,7 @@ export default function Index() {
                    <Image
                 source={require("../../assets/images/google.png")}
                 className="size-10 mr-3"
-                contentFit="contain"
+                resizeMode="contain"
                 />
                 <Text className="text-black font-medium text-base">Continue
                   with Google
@@ -68,7 +66,7 @@ export default function Index() {
                   <Image
                 source={require("../../assets/images/apple.png")}
                 className="size-8 mr-3"
-                contentFit="contain"
+                resizeMode="contain"
                 />
                   <Text className="text-black font-medium text-base">Continue
                     with Apple
